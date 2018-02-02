@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 extension DBService {
-    public func addJob(title: String, description: String) {
+    public func addJob(title: String, description: String, image: UIImage) {
         let childByAutoId = DBService.manager.getJobs().childByAutoId()
         childByAutoId.setValue(["title"         : title,
                                 "description"   : description,
@@ -19,9 +20,13 @@ extension DBService {
                                     if let error = error {
                                         print("addJob error: \(error)")
                                     } else {
-                                        print("database reference: \(dbRef)")
+                                        print("job added @ database reference: \(dbRef)")
+                                        
+                                        // add an image to storage
+                                        StorageService.manager.storeImage(image: image, jobId: childByAutoId.key)
+                                        
+                                        // TODO: add image to database
                                     }
-            
         }
     }
 }

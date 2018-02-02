@@ -10,6 +10,9 @@ target 'JobMktPlace' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Database'
 	pod 'Firebase/Storage'
+    pod 'Toucan'
+    pod 'SnapKit'
+    pod 'Kingfisher'
 
   target 'JobMktPlaceTests' do
     inherit! :search_paths

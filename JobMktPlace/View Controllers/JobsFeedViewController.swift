@@ -7,15 +7,56 @@
 //
 
 import UIKit
+import Firebase
 
 class JobsFeedViewController: UIViewController {
+    
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cellSpacing: CGFloat = 10.0
+        let itemWidth: CGFloat = view.bounds.width - (cellSpacing * 2)
+        let itemHeight: CGFloat = view.bounds.height * 0.80
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = cellSpacing
+        layout.minimumInteritemSpacing = cellSpacing
+        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+        layout.sectionInset = UIEdgeInsetsMake(cellSpacing, cellSpacing, cellSpacing, cellSpacing)
+        let cv = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+        cv.register(JobCell.self, forCellWithReuseIdentifier: "JobCell")
+        cv.backgroundColor = .yellow
+        cv.dataSource = self
+        return cv
+    }()
 
     private var authUserService = AuthUserService()
     
+    // data model
+    private var jobs = [Job]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(collectionView)
         authUserService.delegate = self
         configureNavBar()
+        
+        // get data from our "jobs" reference
+        DBService.manager.getJobs().observe(.value) { (snapshot) in
+            var jobs = [Job]()
+            for child in snapshot.children {
+                let dataSnapshot = child as! DataSnapshot
+                if let dict = dataSnapshot.value as? [String : Any] {
+                    let job = Job.init(jobDict: dict)
+                    jobs.append(job)
+                }
+            }
+            self.jobs = jobs
+        }
     }
     
     private func configureNavBar() {
@@ -43,6 +84,20 @@ class JobsFeedViewController: UIViewController {
         let okAction = UIAlertAction(title: "Ok", style: .default) { alert in }
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension JobsFeedViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("there are \(jobs.count) in the database")
+        return jobs.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "JobCell", for: indexPath) as! JobCell
+        let job = jobs[indexPath.row]
+        cell.configureCell(job: job)
+        cell.backgroundColor = .white
+        return cell
     }
 }
 

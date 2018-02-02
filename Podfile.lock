@@ -43,18 +43,24 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
   - GTMSessionFetcher/Core (1.1.12)
+  - Kingfisher (4.1.0)
   - leveldb-library (1.18.3)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - SnapKit (4.0.0)
+  - Toucan (0.6.0)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - Kingfisher
+  - SnapKit
+  - Toucan
 
 SPEC CHECKSUMS:
   Firebase: 83283761a1ef6dc9846e03d08059f51421afbd65
@@ -66,9 +72,12 @@ SPEC CHECKSUMS:
   FirebaseStorage: 0cca42d9b889a0227c3a50121f45a4469fc9eb27
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
+  Kingfisher: f14df8cbe576bf55f211fa589e9869bceb4ea87d
   leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  Toucan: 47485bbc9cb4541ef6318d6886103e6eaf16e919
 
-PODFILE CHECKSUM: 2cf167f28a73301e996c526021ff41ef2762c703
+PODFILE CHECKSUM: 9d53fdebad482ec7cc4f22fa13784bf575fbe042
 
 COCOAPODS: 1.4.0
