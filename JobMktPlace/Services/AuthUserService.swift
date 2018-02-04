@@ -34,8 +34,6 @@ class AuthUserService: NSObject {
             if let error = error {
                 self.delegate?.didFailCreatingUser?(self, error: error)
             } else if let user = user {
-                // TODO: add the authenticated user to the database
-                
                 // update Authentication user displayName with their email prefix
                 let changeRequest = user.createProfileChangeRequest()
                 let stringArray = user.email!.components(separatedBy: "@")
@@ -46,6 +44,8 @@ class AuthUserService: NSObject {
                         print("changeRequest error: \(error)")
                     } else {
                         print("changeRequest was successful for username: \(username)")
+                        // add the authenticated user to the database
+                        DBService.manager.addUser()
                         self.delegate?.didCreateUser?(self, user: user)
                     }
                 })

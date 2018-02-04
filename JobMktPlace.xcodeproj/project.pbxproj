@@ -15,6 +15,8 @@
 		5726BE552023672F00FFA74B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5726BE542023672F00FFA74B /* GoogleService-Info.plist */; };
 		57283EBB2024DA240020022E /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57283EBA2024DA240020022E /* Job.swift */; };
 		57283EBD2024DC9D0020022E /* JobCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57283EBC2024DC9D0020022E /* JobCell.swift */; };
+		5748C39620277E44003091E0 /* DBService+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748C39520277E44003091E0 /* DBService+User.swift */; };
+		574F0F732027652C00EDF042 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574F0F722027652C00EDF042 /* ProfileView.swift */; };
 		57603B4B202369A10089247B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57603B4A202369A10089247B /* Login.storyboard */; };
 		57603B4D202369AF0089247B /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57603B4C202369AF0089247B /* TabBar.storyboard */; };
 		57603B4F202369CA0089247B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57603B4E202369CA0089247B /* LoginViewController.swift */; };
@@ -23,11 +25,11 @@
 		57603B5520236AA00089247B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57603B5420236AA00089247B /* ProfileViewController.swift */; };
 		57603B5720236CEB0089247B /* AuthUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57603B5620236CEB0089247B /* AuthUserService.swift */; };
 		57603B592023877F0089247B /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57603B582023877F0089247B /* DBService.swift */; };
-		57603B5B202389500089247B /* DBService+Jobs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57603B5A202389500089247B /* DBService+Jobs.swift */; };
+		57603B5B202389500089247B /* DBService+Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57603B5A202389500089247B /* DBService+Job.swift */; };
 		57603B5D20238C2F0089247B /* AddJob.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57603B5C20238C2F0089247B /* AddJob.storyboard */; };
 		57603B5F20238C6C0089247B /* AddJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57603B5E20238C6C0089247B /* AddJobViewController.swift */; };
 		57603B902024C1BA0089247B /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57603B8F2024C1BA0089247B /* StorageService.swift */; };
-		57603B922024C33D0089247B /* StorageService+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57603B912024C33D0089247B /* StorageService+Images.swift */; };
+		57603B922024C33D0089247B /* StorageService+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57603B912024C33D0089247B /* StorageService+Image.swift */; };
 		F613975410969739ADD65380 /* Pods_JobMktPlace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46521C3A597C6645466EAA0 /* Pods_JobMktPlace.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,8 @@
 		5726BE542023672F00FFA74B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57283EBA2024DA240020022E /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		57283EBC2024DC9D0020022E /* JobCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCell.swift; sourceTree = "<group>"; };
+		5748C39520277E44003091E0 /* DBService+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBService+User.swift"; sourceTree = "<group>"; };
+		574F0F722027652C00EDF042 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		57603B4A202369A10089247B /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		57603B4C202369AF0089247B /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		57603B4E202369CA0089247B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -62,11 +66,11 @@
 		57603B5420236AA00089247B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		57603B5620236CEB0089247B /* AuthUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserService.swift; sourceTree = "<group>"; };
 		57603B582023877F0089247B /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
-		57603B5A202389500089247B /* DBService+Jobs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBService+Jobs.swift"; sourceTree = "<group>"; };
+		57603B5A202389500089247B /* DBService+Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBService+Job.swift"; sourceTree = "<group>"; };
 		57603B5C20238C2F0089247B /* AddJob.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddJob.storyboard; sourceTree = "<group>"; };
 		57603B5E20238C6C0089247B /* AddJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJobViewController.swift; sourceTree = "<group>"; };
 		57603B8F2024C1BA0089247B /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
-		57603B912024C33D0089247B /* StorageService+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageService+Images.swift"; sourceTree = "<group>"; };
+		57603B912024C33D0089247B /* StorageService+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageService+Image.swift"; sourceTree = "<group>"; };
 		6264F7A85159712F5C2BDE70 /* Pods-JobMktPlace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobMktPlace.release.xcconfig"; path = "Pods/Target Support Files/Pods-JobMktPlace/Pods-JobMktPlace.release.xcconfig"; sourceTree = "<group>"; };
 		900FAB180A24A9342D8C8748 /* Pods_JobMktPlaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JobMktPlaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93CB55161CDDAF1444C5C04D /* Pods-JobMktPlaceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobMktPlaceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JobMktPlaceTests/Pods-JobMktPlaceTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -161,8 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				57603B5620236CEB0089247B /* AuthUserService.swift */,
-				57603B932024C9B40089247B /* Storage */,
 				57603B8E2024C19D0089247B /* Database */,
+				57603B932024C9B40089247B /* Storage */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -173,8 +177,8 @@
 				57603B50202369E00089247B /* TabBarController.swift */,
 				57603B4E202369CA0089247B /* LoginViewController.swift */,
 				57603B5220236A8E0089247B /* JobsFeedViewController.swift */,
-				57603B5420236AA00089247B /* ProfileViewController.swift */,
 				57603B5E20238C6C0089247B /* AddJobViewController.swift */,
+				57603B5420236AA00089247B /* ProfileViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -191,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				57283EBC2024DC9D0020022E /* JobCell.swift */,
+				574F0F722027652C00EDF042 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -209,7 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				57603B582023877F0089247B /* DBService.swift */,
-				57603B5A202389500089247B /* DBService+Jobs.swift */,
+				57603B5A202389500089247B /* DBService+Job.swift */,
+				5748C39520277E44003091E0 /* DBService+User.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -218,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				57603B8F2024C1BA0089247B /* StorageService.swift */,
-				57603B912024C33D0089247B /* StorageService+Images.swift */,
+				57603B912024C33D0089247B /* StorageService+Image.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -465,14 +471,16 @@
 				57603B5320236A8E0089247B /* JobsFeedViewController.swift in Sources */,
 				57603B51202369E00089247B /* TabBarController.swift in Sources */,
 				57603B592023877F0089247B /* DBService.swift in Sources */,
+				5748C39620277E44003091E0 /* DBService+User.swift in Sources */,
 				57283EBD2024DC9D0020022E /* JobCell.swift in Sources */,
 				57603B902024C1BA0089247B /* StorageService.swift in Sources */,
-				57603B922024C33D0089247B /* StorageService+Images.swift in Sources */,
+				57603B922024C33D0089247B /* StorageService+Image.swift in Sources */,
 				57283EBB2024DA240020022E /* Job.swift in Sources */,
 				57603B5520236AA00089247B /* ProfileViewController.swift in Sources */,
 				57603B4F202369CA0089247B /* LoginViewController.swift in Sources */,
 				5726BE35202366E200FFA74B /* AppDelegate.swift in Sources */,
-				57603B5B202389500089247B /* DBService+Jobs.swift in Sources */,
+				574F0F732027652C00EDF042 /* ProfileView.swift in Sources */,
+				57603B5B202389500089247B /* DBService+Job.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,7 +627,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 26RHXP32FH;
+				DEVELOPMENT_TEAM = ZEKMNK5YD3;
 				INFOPLIST_FILE = JobMktPlace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexcpaul.JobMktPlace;
@@ -635,7 +643,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 26RHXP32FH;
+				DEVELOPMENT_TEAM = ZEKMNK5YD3;
 				INFOPLIST_FILE = JobMktPlace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexcpaul.JobMktPlace;

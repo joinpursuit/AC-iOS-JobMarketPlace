@@ -23,7 +23,7 @@ class JobsFeedViewController: UIViewController {
         layout.sectionInset = UIEdgeInsetsMake(cellSpacing, cellSpacing, cellSpacing, cellSpacing)
         let cv = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         cv.register(JobCell.self, forCellWithReuseIdentifier: "JobCell")
-        cv.backgroundColor = .yellow
+        cv.backgroundColor = .white
         cv.dataSource = self
         return cv
     }()
@@ -55,12 +55,17 @@ class JobsFeedViewController: UIViewController {
                     jobs.append(job)
                 }
             }
-            self.jobs = jobs
+            // filter out current user's job posts
+            // filter out isScheduled job posts
+            self.jobs = jobs.filter{ $0.userId != AuthUserService.getCurrentUser()?.uid }
+                .filter{ $0.isScheduled == false }
+                .sorted{ $0.dateCreated > $1.dateCreated }
+            
         }
     }
     
     private func configureNavBar() {
-        navigationItem.title = "Jobs"
+        navigationItem.title = "@\(AuthUserService.getCurrentUser()?.displayName ?? "Jobs")"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "sign out", style: .plain, target: self, action: #selector(signOut))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addJob))
     }
@@ -70,8 +75,6 @@ class JobsFeedViewController: UIViewController {
     }
     
     @objc private func addJob() {
-        //DBService.manager.addJob(title: "Need Swift help!!!!", description: "I can't understand custom delegation :-((((((")
-        //DBService.manager.addJob(title: "Leaking faucet, NEED PLUMBER", description: "I am experiencing a leaky faucet. Please Help! Estimations are welcome")
         let addJobVC = AddJobViewController.storyboardInstance()
         addJobVC.modalTransitionStyle = .crossDissolve
         addJobVC.modalPresentationStyle = .overCurrentContext

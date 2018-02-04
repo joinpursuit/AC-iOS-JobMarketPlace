@@ -1,5 +1,5 @@
 //
-//  StorageService+Images.swift
+//  StorageService+Image.swift
 //  JobMktPlace
 //
 //  Created by Alex Paul on 2/2/18.

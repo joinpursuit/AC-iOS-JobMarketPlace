@@ -78,9 +78,11 @@ class AddJobViewController: UITableViewController {
     
     @IBAction func create(_ sender: UIBarButtonItem) {
         guard let image = currentSelectedImage else { print("don't have an image"); return }
-        // create job
-        DBService.manager.addJob(title: "Need Swift Help", description: "I am struggling with closures", image: image)
-        
+        guard let title = jobTitle.text else { print("title is nil"); return }
+        guard !title.isEmpty else { print("title is empty"); return }
+        guard let description = jobDescription.text else { print("description is nil"); return }
+        guard !description.isEmpty else { print("description is empty"); return }
+        DBService.manager.addJob(title: title, description: description, image: image)
         dismiss(animated: true, completion: nil)
     }
 }
