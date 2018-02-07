@@ -32,6 +32,11 @@ class LoginViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     public static func storyboardInstance() -> LoginViewController {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController

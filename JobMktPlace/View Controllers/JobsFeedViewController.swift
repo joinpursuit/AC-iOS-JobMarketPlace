@@ -15,7 +15,6 @@ class JobsFeedViewController: UIViewController {
 
     private var authUserService = AuthUserService()
     
-    // data model
     private var jobs = [Job]() {
         didSet {
             DispatchQueue.main.async {
@@ -29,7 +28,6 @@ class JobsFeedViewController: UIViewController {
         view.addSubview(jobsFeedView)
         jobsFeedView.collectionView.dataSource = self
         jobsFeedView.collectionView.delegate = self 
-        authUserService.delegate = self
         configureNavBar()
         
         // get data from our "jobs" reference
@@ -56,12 +54,7 @@ class JobsFeedViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = "JobMktPlace"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "sign out", style: .plain, target: self, action: #selector(signOut))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addJob))
-    }
-    
-    @objc private func signOut() {
-        authUserService.signOut()
     }
     
     @objc private func addJob() {
@@ -104,16 +97,3 @@ extension JobsFeedViewController: UICollectionViewDelegate {
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
-
-extension JobsFeedViewController: AuthUserServiceDelegate {
-    func didSignOut(_ userService: AuthUserService) {
-        let loginVC = LoginViewController.storyboardInstance()
-        tabBarController?.tabBar.isHidden = true
-        navigationController?.viewControllers = [loginVC]
-    }
-    func didFailSigningOut(_ userService: AuthUserService, error: Error) {
-        showAlert(title: "Error Signing Out", message: error.localizedDescription)
-    }
-}
-
-

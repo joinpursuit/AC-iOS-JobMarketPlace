@@ -97,6 +97,15 @@ extension DBService {
                 print("successfully marked complete dbRef: \(dbRef)")
             }
         }
-
+    }
+    
+    public func removeJob(job: Job) {
+        DBService.manager.getJobs().child(job.jobId).removeValue { (error, dbRef) in
+            if let error = error {
+                print("error removing job with error: \(error)")
+            } else {
+                print("job removed from dbRef: \(dbRef)")
+            }
+        }
     }
 }

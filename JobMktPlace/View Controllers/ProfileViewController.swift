@@ -18,6 +18,8 @@ class ProfileViewController: UIViewController {
     
     private var profileView = ProfileView()
     
+    private var authUserService = AuthUserService() 
+    
     private var postedJobs = [Job]() {
         didSet {
             DispatchQueue.main.async {
@@ -37,6 +39,8 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(profileView)
+        authUserService.delegate = self
+
         configureNavBar()
         
         profileView.postedJobsCollectionView.dataSource = self
@@ -51,6 +55,11 @@ class ProfileViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = "Profile - @\(AuthUserService.getCurrentUser()?.displayName ?? "Jobs")"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "sign out", style: .plain, target: self, action: #selector(signOut))
+    }
+    
+    @objc private func signOut() {
+        authUserService.signOut()
     }
     
     private func observeJobs() {
@@ -75,6 +84,13 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { alert in }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
 }
 
 extension ProfileViewController: UICollectionViewDataSource {
@@ -91,6 +107,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         cell.jobImage.contentMode = .scaleAspectFill
         cell.jobImage.clipsToBounds = true
         if collectionView == profileView.postedJobsCollectionView {
+            cell.delegate = self
             let postedJob = postedJobs[indexPath.row]
             cell.configureCell(job: postedJob)
         } else {
@@ -123,5 +140,29 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
         let itemWidth: CGFloat = (view.bounds.width - (cellSpacing * 3)) / 2
         let itemHeight: CGFloat = (collectionView.bounds.height - (cellSpacing * 2.0))
         return CGSize(width: itemWidth, height: itemHeight)
+    }
+}
+
+extension ProfileViewController: JobCellDelegate {
+    func jobCellDeleteAction(_ jobCell: JobCell, job: Job) {
+        let alertController = UIAlertController(title: "Delete Action", message: "Select an Action", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        let deleteAction = UIAlertAction(title: "Delete Job", style: .destructive, handler: {action in
+            DBService.manager.removeJob(job: job)
+        })
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension ProfileViewController: AuthUserServiceDelegate {
+    func didSignOut(_ userService: AuthUserService) {
+        let loginVC = LoginViewController.storyboardInstance()
+        tabBarController?.tabBar.isHidden = true
+        navigationController?.viewControllers = [loginVC]
+    }
+    func didFailSigningOut(_ userService: AuthUserService, error: Error) {
+        showAlert(title: "Error Signing Out", message: error.localizedDescription)
     }
 }

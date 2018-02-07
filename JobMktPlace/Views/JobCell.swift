@@ -10,9 +10,17 @@ import UIKit
 import SnapKit
 import Kingfisher
 
+protocol JobCellDelegate: class {
+    func jobCellDeleteAction(_ jobCell: JobCell, job: Job)
+}
+
 class JobCell: UICollectionViewCell {
     
-    // TODO: add a title and image
+    private var currentJob: Job!
+    private var longPressGesture: UILongPressGestureRecognizer!
+    
+    public weak var delegate: JobCellDelegate?
+    
     lazy var jobTitle: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
@@ -41,13 +49,18 @@ class JobCell: UICollectionViewCell {
         layer.borderColor = UIColor.lightGray.cgColor
         layer.borderWidth = 0.5
         layer.cornerRadius = 10.0
+        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(deleteAction(_:)))
+        addGestureRecognizer(longPressGesture)
         setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+// MARK:- Setup Views
+extension JobCell {
     private func setupViews() {
         setupJobTitle()
         setupJobImage()
@@ -86,15 +99,21 @@ class JobCell: UICollectionViewCell {
     }
     
     public func configureCell(job: Job) {
+        currentJob = job
         jobTitle.text = job.title
         jobCreator.text = "@\(job.creator)"
         if let imageURL = job.imageURL {
             jobImage.kf.indicatorType = .activity
             jobImage.kf.setImage(with: URL(string:imageURL), placeholder: UIImage.init(named: "placeholder-image"), options: nil, progressBlock: nil) { (image, error, cacheType, url) in
-                
             }
         }
     }
+    
+    @objc private func deleteAction(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        if currentJob.userId != AuthUserService.getCurrentUser()?.uid { print("not job creator"); return }
+        if gestureRecognizer.state == UIGestureRecognizerState.began {
+            delegate?.jobCellDeleteAction(self, job: currentJob)
+        }
+    }
 }
-
 
