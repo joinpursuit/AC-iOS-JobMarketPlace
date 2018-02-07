@@ -53,7 +53,7 @@ class JobsFeedViewController: UIViewController {
     private func configureNavBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
-        navigationItem.title = "JobMktPlace"
+        navigationItem.title = "JobMarketPlace"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addJob))
     }
     

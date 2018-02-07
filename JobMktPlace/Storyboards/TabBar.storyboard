@@ -41,18 +41,18 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ANo-cd-kcU" id="0sm-zV-vps">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yj4-2g-XSv">
-                                                    <rect key="frame" x="15" y="5" width="33" height="20"/>
+                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RAq-WM-kxr">
-                                                    <rect key="frame" x="15" y="25" width="44" height="15"/>
+                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -136,7 +136,7 @@
         <scene sceneID="0Qn-cD-qyM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7B4-OO-0H5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Jobs" id="sQJ-il-Tg7"/>
+                    <tabBarItem key="tabBarItem" title="Jobs" image="jobs-icon" id="sQJ-il-Tg7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="95p-Er-cf5">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -155,7 +155,7 @@
         <scene sceneID="dXP-Dx-Jqv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KE4-F5-BZE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="U7X-FA-bU9"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile-icon" id="U7X-FA-bU9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mg1-0M-bZ6">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -186,18 +186,18 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vDu-Cp-kb0" id="hBb-nz-RrU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K03-h7-WL6">
-                                                    <rect key="frame" x="15" y="5" width="33" height="20"/>
+                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pFt-Nd-ab6">
-                                                    <rect key="frame" x="15" y="25" width="44" height="15"/>
+                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -245,7 +245,7 @@
         <scene sceneID="stw-3J-jcT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sh1-sp-3Ju" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Messages" id="OkB-rQ-jhf"/>
+                    <tabBarItem key="tabBarItem" title="Messages" image="messages-icon" id="OkB-rQ-jhf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fhk-v0-Tjk">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -264,7 +264,7 @@
         <scene sceneID="6Px-9C-wOV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F7i-I1-mrv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" id="XEv-2O-8Xe"/>
+                    <tabBarItem key="tabBarItem" title="History" image="history-icon" id="XEv-2O-8Xe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HZh-Cz-4Kf">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -280,4 +280,10 @@
             <point key="canvasLocation" x="385" y="944"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="history-icon" width="24" height="25"/>
+        <image name="jobs-icon" width="18" height="25"/>
+        <image name="messages-icon" width="25" height="25"/>
+        <image name="profile-icon" width="25" height="25"/>
+    </resources>
 </document>

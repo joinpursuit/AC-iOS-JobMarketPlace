@@ -49,7 +49,7 @@ class JobCell: UICollectionViewCell {
         layer.borderColor = UIColor.lightGray.cgColor
         layer.borderWidth = 0.5
         layer.cornerRadius = 10.0
-        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(deleteAction(_:)))
+        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(deleteAction))
         addGestureRecognizer(longPressGesture)
         setupViews()
     }
@@ -109,11 +109,9 @@ extension JobCell {
         }
     }
     
-    @objc private func deleteAction(_ gestureRecognizer: UILongPressGestureRecognizer) {
+    @objc private func deleteAction() {
         if currentJob.userId != AuthUserService.getCurrentUser()?.uid { print("not job creator"); return }
-        if gestureRecognizer.state == UIGestureRecognizerState.began {
-            delegate?.jobCellDeleteAction(self, job: currentJob)
-        }
+        delegate?.jobCellDeleteAction(self, job: currentJob)
     }
 }
 

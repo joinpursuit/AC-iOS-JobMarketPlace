@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController {
     private func configureNavBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
-        navigationItem.title = "Profile - @\(AuthUserService.getCurrentUser()?.displayName ?? "Jobs")"
+        navigationItem.title = "@\(AuthUserService.getCurrentUser()?.displayName ?? "Jobs")"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "sign out", style: .plain, target: self, action: #selector(signOut))
     }
     
