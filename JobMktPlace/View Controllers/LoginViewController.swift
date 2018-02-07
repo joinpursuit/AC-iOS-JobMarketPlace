@@ -13,15 +13,23 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginMessageLabel: UILabel!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     
     private var authUserService = AuthUserService()
     private var isNewUser = true
+    
+    private var tapGesture: UITapGestureRecognizer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         authUserService.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        loginMessageLabel.text = ""
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
     
     public static func storyboardInstance() -> LoginViewController {
@@ -46,10 +54,11 @@ class LoginViewController: UIViewController {
     
     // either creates new user or sign existing user
     @IBAction private func authActionButtonPressed() {
-        guard let emailText = emailTextField.text else { print("email is nil"); return }
-        guard !emailText.isEmpty else { print("email is empty"); return }
-        guard let passwordText = passwordTextField.text else { print("password is nil"); return }
-        guard !passwordText.isEmpty else { print("password is empty"); return }
+        view.endEditing(true)
+        guard let emailText = emailTextField.text else { loginMessageLabel.text = "email is nil"; return }
+        guard !emailText.isEmpty else { loginMessageLabel.text = "email is empty"; return }
+        guard let passwordText = passwordTextField.text else { loginMessageLabel.text = "password is nil"; return }
+        guard !passwordText.isEmpty else { loginMessageLabel.text = "password is empty"; return }
         if isNewUser {
             authUserService.createUser(email: emailText, password: passwordText)
         } else {
@@ -57,11 +66,8 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default) { alert in }
-        alertController.addAction(okAction)
-        present(alertController, animated: true, completion: nil)
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
@@ -72,13 +78,19 @@ extension LoginViewController: AuthUserServiceDelegate {
         present(tabController, animated: true, completion: nil)
     }
     func didFailCreatingUser(_ userService: AuthUserService, error: Error) {
-        showAlert(title: "Error Creating User", message: error.localizedDescription)
+        loginMessageLabel.text = error.localizedDescription
     }
     func didSignIn(_ userService: AuthUserService, user: User) {
         let tabController = TabBarController.storyboardInstance()
         present(tabController, animated: true, completion: nil)
     }
     func didFailToSignIn(_ userService: AuthUserService, error: Error) {
-        showAlert(title: "Error Signing in User", message: error.localizedDescription)
+        loginMessageLabel.text = error.localizedDescription
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        loginMessageLabel.text = ""
     }
 }

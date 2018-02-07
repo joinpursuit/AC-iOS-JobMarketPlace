@@ -16,7 +16,7 @@ enum CollectionViewType: Int {
 
 class ProfileViewController: UIViewController {
     
-    private let profileView = ProfileView()
+    private var profileView = ProfileView()
     
     private var postedJobs = [Job]() {
         didSet {
@@ -26,7 +26,13 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    private var scheduledJobs = [Job]()
+    private var scheduledJobs = [Job]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.profileView.scheduledJobsCollectionView.reloadData()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,12 +48,15 @@ class ProfileViewController: UIViewController {
     }
     
     private func configureNavBar() {
-        navigationItem.title = "Profile"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.title = "Profile - @\(AuthUserService.getCurrentUser()?.displayName ?? "Jobs")"
     }
     
-    private func observeJobs() {        
+    private func observeJobs() {
         DBService.manager.getJobs().observe(.value) { (snapshot) in
             var postedJobs = [Job]()
+            var scheduledJobs = [Job]()
             for child in snapshot.children {
                 let dataSnapshot = child as! DataSnapshot
                 if let dict = dataSnapshot.value as? [String: Any] {
@@ -56,9 +65,13 @@ class ProfileViewController: UIViewController {
                     if job.userId == AuthUserService.getCurrentUser()?.uid {
                         postedJobs.append(job)
                     }
+                    if job.contractorId == AuthUserService.getCurrentUser()?.uid {
+                        scheduledJobs.append(job)
+                    }
                 }
             }
-            self.postedJobs = postedJobs
+            self.postedJobs = postedJobs.filter{ $0.isComplete == false }
+            self.scheduledJobs = scheduledJobs.filter{ $0.isComplete == false }
         }
     }
     
@@ -81,9 +94,26 @@ extension ProfileViewController: UICollectionViewDataSource {
             let postedJob = postedJobs[indexPath.row]
             cell.configureCell(job: postedJob)
         } else {
-            
+            let scheduledJob = scheduledJobs[indexPath.row]
+            cell.configureCell(job: scheduledJob)
         }
         return cell
+    }
+}
+
+extension ProfileViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! JobCell
+        var job: Job
+        if collectionView == profileView.postedJobsCollectionView {
+            job = postedJobs[indexPath.row]
+        } else {
+            job = scheduledJobs[indexPath.row]
+        }
+        let detailVC = DetailViewController.storyboardInstance()
+        detailVC.image = cell.jobImage.image
+        detailVC.job = job
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

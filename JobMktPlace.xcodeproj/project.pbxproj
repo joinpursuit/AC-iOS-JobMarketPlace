@@ -30,6 +30,13 @@
 		57603B5F20238C6C0089247B /* AddJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57603B5E20238C6C0089247B /* AddJobViewController.swift */; };
 		57603B902024C1BA0089247B /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57603B8F2024C1BA0089247B /* StorageService.swift */; };
 		57603B922024C33D0089247B /* StorageService+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57603B912024C33D0089247B /* StorageService+Image.swift */; };
+		5774AE012027D1C5004830A9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774AE002027D1C5004830A9 /* DetailViewController.swift */; };
+		5774AE032027D1E2004830A9 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5774AE022027D1E2004830A9 /* Detail.storyboard */; };
+		5774AE052027D4E0004830A9 /* JobsFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774AE042027D4E0004830A9 /* JobsFeedView.swift */; };
+		5774AE072028005B004830A9 /* DBService+Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774AE062028005B004830A9 /* DBService+Message.swift */; };
+		5774AE092028078C004830A9 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774AE082028078C004830A9 /* MessagesViewController.swift */; };
+		5774AE0D20280871004830A9 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774AE0C20280871004830A9 /* Message.swift */; };
+		5774AE0F20286DEB004830A9 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5774AE0E20286DEB004830A9 /* HistoryViewController.swift */; };
 		F613975410969739ADD65380 /* Pods_JobMktPlace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A46521C3A597C6645466EAA0 /* Pods_JobMktPlace.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +78,13 @@
 		57603B5E20238C6C0089247B /* AddJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJobViewController.swift; sourceTree = "<group>"; };
 		57603B8F2024C1BA0089247B /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		57603B912024C33D0089247B /* StorageService+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageService+Image.swift"; sourceTree = "<group>"; };
+		5774AE002027D1C5004830A9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		5774AE022027D1E2004830A9 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		5774AE042027D4E0004830A9 /* JobsFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsFeedView.swift; sourceTree = "<group>"; };
+		5774AE062028005B004830A9 /* DBService+Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DBService+Message.swift"; sourceTree = "<group>"; };
+		5774AE082028078C004830A9 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		5774AE0C20280871004830A9 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		5774AE0E20286DEB004830A9 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		6264F7A85159712F5C2BDE70 /* Pods-JobMktPlace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobMktPlace.release.xcconfig"; path = "Pods/Target Support Files/Pods-JobMktPlace/Pods-JobMktPlace.release.xcconfig"; sourceTree = "<group>"; };
 		900FAB180A24A9342D8C8748 /* Pods_JobMktPlaceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JobMktPlaceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93CB55161CDDAF1444C5C04D /* Pods-JobMktPlaceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobMktPlaceTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JobMktPlaceTests/Pods-JobMktPlaceTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,7 +192,10 @@
 				57603B4E202369CA0089247B /* LoginViewController.swift */,
 				57603B5220236A8E0089247B /* JobsFeedViewController.swift */,
 				57603B5E20238C6C0089247B /* AddJobViewController.swift */,
+				5774AE002027D1C5004830A9 /* DetailViewController.swift */,
 				57603B5420236AA00089247B /* ProfileViewController.swift */,
+				5774AE082028078C004830A9 /* MessagesViewController.swift */,
+				5774AE0E20286DEB004830A9 /* HistoryViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -187,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				57283EBA2024DA240020022E /* Job.swift */,
+				5774AE0C20280871004830A9 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -196,6 +214,7 @@
 			children = (
 				57283EBC2024DC9D0020022E /* JobCell.swift */,
 				574F0F722027652C00EDF042 /* ProfileView.swift */,
+				5774AE042027D4E0004830A9 /* JobsFeedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -206,6 +225,7 @@
 				57603B4A202369A10089247B /* Login.storyboard */,
 				57603B4C202369AF0089247B /* TabBar.storyboard */,
 				57603B5C20238C2F0089247B /* AddJob.storyboard */,
+				5774AE022027D1E2004830A9 /* Detail.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -216,6 +236,7 @@
 				57603B582023877F0089247B /* DBService.swift */,
 				57603B5A202389500089247B /* DBService+Job.swift */,
 				5748C39520277E44003091E0 /* DBService+User.swift */,
+				5774AE062028005B004830A9 /* DBService+Message.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -333,6 +354,7 @@
 				57603B4D202369AF0089247B /* TabBar.storyboard in Resources */,
 				57603B4B202369A10089247B /* Login.storyboard in Resources */,
 				5726BE3F202366E200FFA74B /* LaunchScreen.storyboard in Resources */,
+				5774AE032027D1E2004830A9 /* Detail.storyboard in Resources */,
 				5726BE552023672F00FFA74B /* GoogleService-Info.plist in Resources */,
 				5726BE3C202366E200FFA74B /* Assets.xcassets in Resources */,
 			);
@@ -469,18 +491,24 @@
 				57603B5720236CEB0089247B /* AuthUserService.swift in Sources */,
 				57603B5F20238C6C0089247B /* AddJobViewController.swift in Sources */,
 				57603B5320236A8E0089247B /* JobsFeedViewController.swift in Sources */,
+				5774AE092028078C004830A9 /* MessagesViewController.swift in Sources */,
 				57603B51202369E00089247B /* TabBarController.swift in Sources */,
 				57603B592023877F0089247B /* DBService.swift in Sources */,
 				5748C39620277E44003091E0 /* DBService+User.swift in Sources */,
+				5774AE052027D4E0004830A9 /* JobsFeedView.swift in Sources */,
 				57283EBD2024DC9D0020022E /* JobCell.swift in Sources */,
+				5774AE012027D1C5004830A9 /* DetailViewController.swift in Sources */,
 				57603B902024C1BA0089247B /* StorageService.swift in Sources */,
 				57603B922024C33D0089247B /* StorageService+Image.swift in Sources */,
+				5774AE0F20286DEB004830A9 /* HistoryViewController.swift in Sources */,
 				57283EBB2024DA240020022E /* Job.swift in Sources */,
 				57603B5520236AA00089247B /* ProfileViewController.swift in Sources */,
 				57603B4F202369CA0089247B /* LoginViewController.swift in Sources */,
 				5726BE35202366E200FFA74B /* AppDelegate.swift in Sources */,
 				574F0F732027652C00EDF042 /* ProfileView.swift in Sources */,
+				5774AE0D20280871004830A9 /* Message.swift in Sources */,
 				57603B5B202389500089247B /* DBService+Job.swift in Sources */,
+				5774AE072028005B004830A9 /* DBService+Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

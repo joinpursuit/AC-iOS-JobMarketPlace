@@ -22,6 +22,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>JobMktPlace uses your photo while creating a job post</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>JobMktPlace uses your photo while creating a job post</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

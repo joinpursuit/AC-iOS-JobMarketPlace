@@ -17,7 +17,10 @@ class Job {
     let imageURL: String?
     let dateCreated: String
     let isScheduled: Bool
+    let isComplete: Bool
     let creator: String
+    let contractor: String
+    let contractorId: String
     
     init(jobDict: [String : Any]) {
         jobId = jobDict["jobId"] as? String ?? ""
@@ -27,7 +30,10 @@ class Job {
         imageURL = jobDict["imageURL"] as? String ?? ""
         dateCreated = jobDict["dateCreated"] as? String ?? ""
         isScheduled = jobDict["isScheduled"] as? Bool ?? false
+        isComplete = jobDict["isComplete"] as? Bool ?? false
         creator = jobDict["creator"] as? String ?? ""
+        contractor = jobDict["contractor"] as? String ?? ""
+        contractorId = jobDict["contractorId"] as? String ?? ""
     }
     
     init(snapshot: DataSnapshot) {
@@ -38,7 +44,10 @@ class Job {
         imageURL = snapshot.childSnapshot(forPath: "imageURL").value as? String ?? ""
         dateCreated = snapshot.childSnapshot(forPath: "dateCreated").value as? String ?? ""
         isScheduled = snapshot.childSnapshot(forPath: "isScheduled").value as? Bool ?? false
+        isComplete = snapshot.childSnapshot(forPath: "isComplete").value as? Bool ?? false
         creator = snapshot.childSnapshot(forPath: "creator").value as? String ?? ""
+        contractor = snapshot.childSnapshot(forPath: "contractor").value as? String ?? ""
+        contractorId = snapshot.childSnapshot(forPath: "contractorId").value as? String ?? ""
     }
 }
 

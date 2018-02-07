@@ -95,5 +95,6 @@ class JobCell: UICollectionViewCell {
             }
         }
     }
-    
 }
+
+

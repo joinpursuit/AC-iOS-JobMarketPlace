@@ -11,22 +11,7 @@ import Firebase
 
 class JobsFeedViewController: UIViewController {
     
-    lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let cellSpacing: CGFloat = 10.0
-        let itemWidth: CGFloat = view.bounds.width - (cellSpacing * 2)
-        let itemHeight: CGFloat = view.bounds.height * 0.80
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = cellSpacing
-        layout.minimumInteritemSpacing = cellSpacing
-        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-        layout.sectionInset = UIEdgeInsetsMake(cellSpacing, cellSpacing, cellSpacing, cellSpacing)
-        let cv = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-        cv.register(JobCell.self, forCellWithReuseIdentifier: "JobCell")
-        cv.backgroundColor = .white
-        cv.dataSource = self
-        return cv
-    }()
+    private let jobsFeedView = JobsFeedView()
 
     private var authUserService = AuthUserService()
     
@@ -34,14 +19,16 @@ class JobsFeedViewController: UIViewController {
     private var jobs = [Job]() {
         didSet {
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
+                self.jobsFeedView.collectionView.reloadData()
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(collectionView)
+        view.addSubview(jobsFeedView)
+        jobsFeedView.collectionView.dataSource = self
+        jobsFeedView.collectionView.delegate = self 
         authUserService.delegate = self
         configureNavBar()
         
@@ -56,16 +43,19 @@ class JobsFeedViewController: UIViewController {
                 }
             }
             // filter out current user's job posts
-            // filter out isScheduled job posts
+            // filter out isScheduled jobs
+            // filter out isComplete jobs
             self.jobs = jobs.filter{ $0.userId != AuthUserService.getCurrentUser()?.uid }
                 .filter{ $0.isScheduled == false }
+                .filter{ $0.isComplete == false }
                 .sorted{ $0.dateCreated > $1.dateCreated }
-            
         }
     }
     
     private func configureNavBar() {
-        navigationItem.title = "@\(AuthUserService.getCurrentUser()?.displayName ?? "Jobs")"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.title = "JobMktPlace"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "sign out", style: .plain, target: self, action: #selector(signOut))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addJob))
     }
@@ -101,6 +91,17 @@ extension JobsFeedViewController: UICollectionViewDataSource {
         cell.configureCell(job: job)
         cell.backgroundColor = .white
         return cell
+    }
+}
+
+extension JobsFeedViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! JobCell
+        let job = jobs[indexPath.row]
+        let detailVC = DetailViewController.storyboardInstance()
+        detailVC.job = job
+        detailVC.image = cell.jobImage.image
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

@@ -19,6 +19,8 @@ class DBService {
         jobsRef = dbRef.child("jobs")
         imagesRef = dbRef.child("images")
         categoriesRef = dbRef.child("categories")
+        messagesRef = dbRef.child("messages")
+
     }
     static let manager = DBService()
     
@@ -27,10 +29,12 @@ class DBService {
     private var jobsRef: DatabaseReference!
     private var imagesRef: DatabaseReference!
     private var categoriesRef: DatabaseReference!
+    private var messagesRef: DatabaseReference!
     
     public func getDB()-> DatabaseReference { return dbRef }
     public func getUsers()-> DatabaseReference { return usersRef }
     public func getJobs()-> DatabaseReference { return jobsRef }
     public func getImages()-> DatabaseReference { return imagesRef }
     public func getCategories()-> DatabaseReference { return categoriesRef }
+    public func getMessages()-> DatabaseReference { return messagesRef }
 }

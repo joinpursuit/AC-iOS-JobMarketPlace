@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gyW-mw-GdN">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -54,15 +53,24 @@
                                     <action selector="toggleAuthentication:" destination="gyW-mw-GdN" eventType="touchUpInside" id="4TX-vD-sNb"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="something went wrong" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwR-ER-pwu">
+                                <rect key="frame" x="16" y="198" width="343" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6GW-e9-qPU" firstAttribute="top" secondItem="NN4-Oy-zcZ" secondAttribute="top" constant="8" id="5tz-jk-Wew"/>
+                            <constraint firstItem="xwR-ER-pwu" firstAttribute="top" secondItem="yvb-0I-nJR" secondAttribute="bottom" constant="8" id="7SS-ng-51h"/>
                             <constraint firstItem="IXp-wx-bzc" firstAttribute="top" secondItem="ODd-QI-fmp" secondAttribute="bottom" constant="20" id="CXP-qc-EBN"/>
                             <constraint firstItem="NN4-Oy-zcZ" firstAttribute="trailing" secondItem="ODd-QI-fmp" secondAttribute="trailing" constant="16" id="K19-XM-Bae"/>
+                            <constraint firstItem="xwR-ER-pwu" firstAttribute="leading" secondItem="NN4-Oy-zcZ" secondAttribute="leading" constant="16" id="QZ2-lB-cTl"/>
                             <constraint firstItem="ODd-QI-fmp" firstAttribute="top" secondItem="NN4-Oy-zcZ" secondAttribute="top" constant="40" id="SOP-AJ-yu7"/>
                             <constraint firstItem="IXp-wx-bzc" firstAttribute="leading" secondItem="NN4-Oy-zcZ" secondAttribute="leading" constant="16" id="UPt-kx-QWR"/>
                             <constraint firstItem="yvb-0I-nJR" firstAttribute="centerX" secondItem="9zb-gN-5dP" secondAttribute="centerX" id="WpC-p0-Fv9"/>
+                            <constraint firstItem="NN4-Oy-zcZ" firstAttribute="trailing" secondItem="xwR-ER-pwu" secondAttribute="trailing" constant="16" id="cRZ-ny-0ZU"/>
                             <constraint firstItem="NN4-Oy-zcZ" firstAttribute="trailing" secondItem="IXp-wx-bzc" secondAttribute="trailing" constant="16" id="hC8-He-HY5"/>
                             <constraint firstItem="ODd-QI-fmp" firstAttribute="leading" secondItem="NN4-Oy-zcZ" secondAttribute="leading" constant="16" id="kEi-xc-tow"/>
                             <constraint firstItem="yvb-0I-nJR" firstAttribute="top" secondItem="IXp-wx-bzc" secondAttribute="bottom" constant="20" id="rOA-Go-O0j"/>
@@ -73,6 +81,7 @@
                     <navigationItem key="navigationItem" id="mXX-mt-Lbe"/>
                     <connections>
                         <outlet property="emailTextField" destination="ODd-QI-fmp" id="tuM-pP-Co5"/>
+                        <outlet property="loginMessageLabel" destination="xwR-ER-pwu" id="aRf-iL-hWi"/>
                         <outlet property="passwordTextField" destination="IXp-wx-bzc" id="im5-ka-caK"/>
                         <outlet property="signInButton" destination="6GW-e9-qPU" id="Sch-9A-KEf"/>
                         <outlet property="submitButton" destination="yvb-0I-nJR" id="a4Z-AM-GF3"/>
@@ -80,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PNw-T5-gMP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="394" y="139"/>
+            <point key="canvasLocation" x="392.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>
