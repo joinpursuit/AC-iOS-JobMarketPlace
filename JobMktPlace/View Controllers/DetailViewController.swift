@@ -46,6 +46,20 @@ class DetailViewController: UITableViewController {
             jobCreatorCell.textLabel?.text = "@\(job.creator)"
             jobCreatorCell.textLabel?.textColor = .blue
         }
+        configureAccessibility()
+    }
+    
+    private func configureAccessibility() {
+        if isCompleteSwitch.isOn {
+            isCompleteSwitch.accessibilityLabel = "Job is complete"
+        } else {
+            isCompleteSwitch.accessibilityLabel = "Job not yet complete"
+        }
+        if isScheduledSwitch.isOn {
+            isScheduledSwitch.accessibilityLabel = "Job is scheduled"
+        } else {
+            isScheduledSwitch.accessibilityLabel = "Job is not yet scheduled"
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

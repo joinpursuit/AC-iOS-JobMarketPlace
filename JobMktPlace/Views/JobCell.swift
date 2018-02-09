@@ -24,7 +24,10 @@ class JobCell: UICollectionViewCell {
     lazy var jobTitle: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
-        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.adjustsFontForContentSizeCategory = true
+        
         return label
     }()
     
@@ -52,6 +55,17 @@ class JobCell: UICollectionViewCell {
         longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(deleteAction))
         addGestureRecognizer(longPressGesture)
         setupViews()
+        configureAccessibility()
+    }
+    
+    private func configureAccessibility() {
+        isAccessibilityElement = true
+        jobCreator.isAccessibilityElement = false
+        jobTitle.isAccessibilityElement = false
+        accessibilityTraits |= UIAccessibilityTraitButton
+        
+        let customAction = UIAccessibilityCustomAction(name: "Delete", target: self, selector: #selector(deleteAction))
+        accessibilityCustomActions = [customAction]
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -99,6 +113,7 @@ extension JobCell {
     }
     
     public func configureCell(job: Job) {
+        accessibilityLabel = job.title
         currentJob = job
         jobTitle.text = job.title
         jobCreator.text = "@\(job.creator)"
@@ -112,6 +127,16 @@ extension JobCell {
     @objc private func deleteAction() {
         if currentJob.userId != AuthUserService.getCurrentUser()?.uid { print("not job creator"); return }
         delegate?.jobCellDeleteAction(self, job: currentJob)
+    }
+}
+
+extension JobCell {
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        // this gets called when user changed text size in accessibility settings
+        // update constraints accordingly
+        
+        // updateDefaultConstraint()
+        // updateLargeConstraints()
     }
 }
 

@@ -55,6 +55,11 @@ class JobsFeedViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         navigationItem.title = "JobMarketPlace"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addJob))
+        configureAccessibility()
+    }
+    
+    private func configureAccessibility() {
+        navigationItem.rightBarButtonItem?.accessibilityLabel = "Create New Job"
     }
     
     @objc private func addJob() {

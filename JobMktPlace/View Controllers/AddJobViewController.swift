@@ -85,6 +85,11 @@ class AddJobViewController: UITableViewController {
         DBService.manager.addJob(title: title, description: description, image: image)
         dismiss(animated: true, completion: nil)
     }
+    
+    override func accessibilityPerformEscape() -> Bool {
+        dismiss(animated: true, completion: nil)
+        return true
+    }
 }
 
 extension AddJobViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
